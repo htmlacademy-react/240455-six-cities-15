@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Виктория Никитина](https://up.htmlacademy.ru/react/15/user/240455).
-* Наставник: `Неизвестно`.
+* Наставник: [Yulia Volkova](https://htmlacademy.ru/profile/id423707).
 
 ---
 
