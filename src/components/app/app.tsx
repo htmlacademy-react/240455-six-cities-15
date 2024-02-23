@@ -1,12 +1,8 @@
 import Main from '../../pages/main/main';
 
-type AppScreenProps = {
-  errorsCount: number;
-}
-
-function App({errorsCount}: AppScreenProps): JSX.Element {
+function App(): JSX.Element {
   return (
-    <Main errorsCount={errorsCount} />
+    <Main />
   );
 }
 

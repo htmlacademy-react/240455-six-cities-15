@@ -1,8 +1,4 @@
-type MainProps = {
-  errorsCount: number;
-}
-
-function Main({errorsCount}: MainProps): JSX.Element {
+function Main(): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
