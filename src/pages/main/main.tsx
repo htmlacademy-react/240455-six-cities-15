@@ -1,14 +1,15 @@
-import PlaceCard from '../../components/place-card.tsx';
 import { Offer } from '../../mock/offer.ts';
 import Header from '../../components/header.tsx';
 import LocationsList from './components/locations-list.tsx';
+import PlaceCard from '../../components/place-card.tsx';
+import Map from '../../components/map.tsx';
 
 type MainProps = {
   offersCount: number;
   offers: Offer[];
 }
 
-function Main({offersCount, offers}: MainProps): JSX.Element {
+export default function Main({offersCount, offers}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -44,7 +45,7 @@ function Main({offersCount, offers}: MainProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map />
             </div>
           </div>
         </div>
@@ -52,5 +53,3 @@ function Main({offersCount, offers}: MainProps): JSX.Element {
     </div>
   );
 }
-
-export default Main;
