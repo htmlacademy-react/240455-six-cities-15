@@ -1,4 +1,4 @@
-import { Offer } from '../../mock/offers';
+import { Offer } from '../../mock/offer';
 import Main from '../../pages/main/main';
 
 type AppProps = {

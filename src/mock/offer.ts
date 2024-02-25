@@ -10,7 +10,7 @@ function generateOffer() {
     title: getRandomArrayElement<string>(TITLES),
     type: getRandomArrayElement<string>(TYPES),
     price: getRandomInteger(20, 500),
-    previewImage: `https://15.design.htmlacademy.pro/static/hotel/${getRandomInteger(1, 20)}].jpg`,
+    previewImage: `https://15.design.htmlacademy.pro/static/hotel/${getRandomInteger(1, 20)}.jpg`,
     city: {
       name: getRandomArrayElement<string>(CITIES),
       location: {

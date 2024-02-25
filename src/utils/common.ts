@@ -22,5 +22,15 @@ function getRandomInteger (min: number, max: number): number {
   return Math.floor(result);
 }
 
+//написание слова с прописной буквы
+function ucFirst(str: string):string {
+  if (!str) {
+    return str;
+  }
 
-export { getRandomArrayElement, createIdGenerator, getRandomInteger };
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+
+
+export { getRandomArrayElement, createIdGenerator, getRandomInteger, ucFirst };

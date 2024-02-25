@@ -1,4 +1,4 @@
-import { generateOffer, Offer } from './mock/offers';
+import { generateOffer, Offer } from './mock/offer';
 
 export const Setting = {
   OffersCount: 312,
@@ -24,6 +24,7 @@ export const TITLES = [
   'Tile House',
   'Amazing and Extremely Central Flat',
   'Perfectly located Castro',
+  'Beautiful & luxurious apartment at great location',
 ] as const;
 
 export const TYPES = [

@@ -1,5 +1,5 @@
 import PlaceCard from '../../components/place-card.tsx';
-import { Offer } from '../../mock/offers';
+import { Offer } from '../../mock/offer.ts';
 
 type MainProps = {
   offersCount: number;
@@ -97,9 +97,16 @@ function Main({offersCount, offers}: MainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer) =>
-                  <PlaceCard key={offer.id} type={offer.type} />
-                )}
+                {offers.map((offer) => (
+                  <PlaceCard
+                    key={offer.id}
+                    type={offer.type}
+                    title={offer.title}
+                    isPremium={offer.isPremium}
+                    previewImage={offer.previewImage}
+                    price={offer.price}
+                    isFavorite={offer.isFavorite}
+                  />))}
               </div>
             </section>
             <div className="cities__right-section">
