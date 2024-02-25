@@ -1,26 +1,29 @@
 import { Offer } from '../../mock/offer.ts';
+import { City } from '../../const';
 import Header from '../../components/header.tsx';
 import LocationsList from './components/locations-list.tsx';
+import PlacesFound from './components/places-found.tsx';
 import PlaceCard from '../../components/place-card.tsx';
 import Map from '../../components/map.tsx';
 
 type MainProps = {
   offersCount: number;
   offers: Offer[];
+  CITIES: City[];
 }
 
-export default function Main({offersCount, offers}: MainProps): JSX.Element {
+export default function Main({offersCount, offers, CITIES}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <LocationsList />
+        <LocationsList CITIES={CITIES} />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+              <PlacesFound offersCount={offersCount} CITIES={CITIES} />
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by </span>
                 <span className="places__sorting-type" tabIndex={0}>

@@ -1,4 +1,4 @@
-import { CITIES } from '../../../const';
+import { City } from '../../../const';
 import { ucFirst } from '../../../utils/common';
 
 type LocationsListItemsProps = {
@@ -17,7 +17,11 @@ function LocationsListItems({cityName, isActive, activeItemClass}: LocationsList
   );
 }
 
-export default function LocationsList(): JSX.Element {
+type LocationsListProps = {
+  CITIES: City[];
+}
+
+export default function LocationsList({CITIES}: LocationsListProps): JSX.Element {
 
   const activeItemClass = ' tabs__item--active';
 

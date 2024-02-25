@@ -31,7 +31,12 @@ export const CITIES = [
     name: 'Dusseldorf',
     isActive: false
   }
-] as const;
+];
+
+export type City = {
+  name: string;
+  isActive: boolean;
+};
 
 export const TITLES = [
   'Loft Studio in the Central Area',
