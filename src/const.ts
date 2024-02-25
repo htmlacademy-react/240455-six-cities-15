@@ -7,12 +7,30 @@ export const Setting = {
 const OFFERS_COUNT = 5 as const;
 
 export const CITIES = [
-  'Paris',
-  'Cologne',
-  'Brussels',
-  'Amsterdam',
-  'Hamburg',
-  'Dusseldorf',
+  {
+    name: 'Paris',
+    isActive: false
+  },
+  {
+    name: 'Cologne',
+    isActive: false
+  },
+  {
+    name: 'Brussels',
+    isActive: false
+  },
+  {
+    name: 'Amsterdam',
+    isActive: true
+  },
+  {
+    name: 'Hamburg',
+    isActive: false
+  },
+  {
+    name: 'Dusseldorf',
+    isActive: false
+  }
 ] as const;
 
 export const TITLES = [

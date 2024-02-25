@@ -12,7 +12,7 @@ function generateOffer() {
     price: getRandomInteger(20, 500),
     previewImage: `https://15.design.htmlacademy.pro/static/hotel/${getRandomInteger(1, 20)}.jpg`,
     city: {
-      name: getRandomArrayElement<string>(CITIES),
+      name: getRandomArrayElement<string>(CITIES.map((city) => (city.name))),
       location: {
         latitude: 48.85661,
         longitude: 2.351499,
