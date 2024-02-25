@@ -3,6 +3,7 @@ import { City } from '../../const';
 import Header from '../../components/header.tsx';
 import LocationsList from './components/locations-list.tsx';
 import PlacesFound from './components/places-found.tsx';
+import PlacesSorting from './components/places-sorting.tsx';
 import PlaceCard from '../../components/place-card.tsx';
 import Map from '../../components/map.tsx';
 
@@ -24,21 +25,7 @@ export default function Main({offersCount, offers, CITIES}: MainProps): JSX.Elem
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <PlacesFound offersCount={offersCount} CITIES={CITIES} />
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by </span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                  <li className="places__option" tabIndex={0}>Price: low to high</li>
-                  <li className="places__option" tabIndex={0}>Price: high to low</li>
-                  <li className="places__option" tabIndex={0}>Top rated first</li>
-                </ul>
-              </form>
+              <PlacesSorting />
               <div className="cities__places-list places__list tabs__content">
                 {offers.map((offer) => (
                   <PlaceCard

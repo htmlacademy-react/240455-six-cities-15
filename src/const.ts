@@ -6,6 +6,30 @@ export const Setting = {
 
 const OFFERS_COUNT = 5 as const;
 
+export const SORTING = [
+  {
+    name: 'Popular',
+    isActive: true
+  },
+  {
+    name: 'Price: low to high',
+    isActive: false
+  },
+  {
+    name: 'Price: high to low',
+    isActive: false
+  },
+  {
+    name: 'Top rated first',
+    isActive: false
+  },
+];
+
+export type Sorting = {
+  name: string;
+  isActive: boolean;
+};
+
 export const CITIES = [
   {
     name: 'Paris',
