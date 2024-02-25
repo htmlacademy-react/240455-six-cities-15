@@ -1,12 +1,17 @@
+import { Offer } from '../../mock/offers';
 import Main from '../../pages/main/main';
 
 type AppProps = {
   offersCount: number;
+  offers: Offer[];
 }
 
-function App({offersCount}: AppProps): JSX.Element {
+function App({offersCount, offers}: AppProps): JSX.Element {
   return (
-    <Main offersCount={offersCount} />
+    <Main
+      offersCount={offersCount}
+      offers={offers}
+    />
   );
 }
 

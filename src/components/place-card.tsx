@@ -1,4 +1,8 @@
-function CityCard(): JSX.Element {
+type PlaceCardProps = {
+  type: string;
+}
+
+function PlaceCard({type}: PlaceCardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       <div className="place-card__mark">
@@ -31,10 +35,10 @@ function CityCard(): JSX.Element {
         <h2 className="place-card__name">
           <a href="#">Beautiful &amp; luxurious apartment at great location</a>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>
   );
 }
 
-export default CityCard;
+export default PlaceCard;

@@ -1,10 +1,12 @@
-import CityCard from '../../pages/main/city-card';
+import PlaceCard from '../../components/place-card.tsx';
+import { Offer } from '../../mock/offers';
 
 type MainProps = {
   offersCount: number;
+  offers: Offer[];
 }
 
-function Main({offersCount}: MainProps): JSX.Element {
+function Main({offersCount, offers}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -95,11 +97,9 @@ function Main({offersCount}: MainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <CityCard />
-                <CityCard />
-                <CityCard />
-                <CityCard />
-                <CityCard />
+                {offers.map((offer) =>
+                  <PlaceCard key={offer.id} type={offer.type} />
+                )}
               </div>
             </section>
             <div className="cities__right-section">
