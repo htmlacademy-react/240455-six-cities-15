@@ -100,3 +100,4 @@ export const GOODS = [
 ] as const;
 
 export const offers: Array<Offer> = Array.from({ length: OFFERS_COUNT }, () => generateOffer());
+export const favorites: Array<Offer> = offers.filter((offer) => offer.isFavorite);

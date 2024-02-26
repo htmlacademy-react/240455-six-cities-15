@@ -1,19 +1,20 @@
-import { Offer } from '../../mock/offer';
-import { City } from '../../const';
-import Main from '../../pages/main/main';
+//import Main from '../../pages/main/main';
+import Favorites from '../../pages/favorites/favorites';
 
-type AppProps = {
-  offersCount: number;
-  offers: Offer[];
-  CITIES: City[];
-}
+// type AppProps = {
+//   offersCount: number;
+// }
 
-export default function App({offersCount, offers, CITIES}: AppProps): JSX.Element {
+// export default function App({offersCount}: AppProps): JSX.Element {
+//   return (
+//     <Main
+//       offersCount={offersCount}
+//     />
+//   );
+// }
+
+export default function App(): JSX.Element {
   return (
-    <Main
-      offersCount={offersCount}
-      offers={offers}
-      CITIES={CITIES}
-    />
+    <Favorites />
   );
 }

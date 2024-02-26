@@ -5,18 +5,24 @@ import BookmarkButton from './ui/bookmark-button';
 
 type PlaceCardProps = {
   offer: Offer;
+  favorite?: boolean;
 }
 
-function PlaceCard({offer}: PlaceCardProps): JSX.Element {
+function PlaceCard({offer, favorite}: PlaceCardProps): JSX.Element {
+
+  const ratingStyle = {
+    width: favorite ? '100%' : '80%'
+  };
+
   return (
-    <article className="cities__card place-card">
+    <article className={`${favorite ? 'favorites__card' : 'cities__card'} place-card`}>
       {offer.isPremium ? <PremiumMark/> : null}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${favorite ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={offer.previewImage} width={`${favorite ? '150' : '260'}`} height={`${favorite ? '110' : '200'}`} alt="Place image" />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={`${favorite ? 'favorites__card-info ' : ''}place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
@@ -26,7 +32,7 @@ function PlaceCard({offer}: PlaceCardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width:'80%'}}></span>
+            <span style={ratingStyle}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

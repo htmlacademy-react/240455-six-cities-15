@@ -1,5 +1,4 @@
-import { Offer } from '../../mock/offer.ts';
-import { City } from '../../const';
+import { CITIES, offers } from '../../const';
 import Header from '../../components/header.tsx';
 import LocationsList from './components/locations-list.tsx';
 import PlacesFound from './components/places-found.tsx';
@@ -9,11 +8,9 @@ import Map from '../../components/map.tsx';
 
 type MainProps = {
   offersCount: number;
-  offers: Offer[];
-  CITIES: City[];
 }
 
-export default function Main({offersCount, offers, CITIES}: MainProps): JSX.Element {
+export default function Main({offersCount}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
