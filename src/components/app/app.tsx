@@ -1,20 +1,13 @@
-//import Main from '../../pages/main/main';
-import Favorites from '../../pages/favorites/favorites';
+import Main from '../../pages/main/main';
 
-// type AppProps = {
-//   offersCount: number;
-// }
+type AppProps = {
+  offersCount: number;
+}
 
-// export default function App({offersCount}: AppProps): JSX.Element {
-//   return (
-//     <Main
-//       offersCount={offersCount}
-//     />
-//   );
-// }
-
-export default function App(): JSX.Element {
+export default function App({offersCount}: AppProps): JSX.Element {
   return (
-    <Favorites />
+    <Main
+      offersCount={offersCount}
+    />
   );
 }
