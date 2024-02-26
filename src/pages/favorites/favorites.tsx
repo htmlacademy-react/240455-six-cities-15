@@ -1,8 +1,9 @@
 import { favorites } from '../../const.ts';
 import { Offer } from '../../mock/offer.ts';
 import Header from '../../components/header.tsx';
+import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
 import PlaceCard from '../../components/place-card.tsx';
-import Footer from './footer.tsx';
+import Footer from './components/footer.tsx';
 
 const favoritesGroupped: { [city: string]: Offer[] } = favorites.reduce((result, favorite) => ({
   ...result,
@@ -19,9 +20,7 @@ function FavoritesInCity({city, offers}: FavoritesInCityProps): JSX.Element {
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <a className="locations__item-link" href="#">
-            <span>{city}</span>
-          </a>
+          <LocationsItemLink city={city} />
         </div>
       </div>
       <div className="favorites__places">

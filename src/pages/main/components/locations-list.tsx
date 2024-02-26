@@ -1,18 +1,15 @@
 import { City } from '../../../const';
-import { ucFirst } from '../../../utils/common';
+import LocationsItemLink from '../../../components/ui/locations-item-link';
 
 type LocationsListItemsProps = {
   cityName: string;
   isActive: boolean;
-  activeItemClass: string;
 }
 
-function LocationsListItems({cityName, isActive, activeItemClass}: LocationsListItemsProps): JSX.Element {
+function LocationsListItems({cityName, isActive}: LocationsListItemsProps): JSX.Element {
   return (
     <li className="locations__item">
-      <a className={`locations__item-link tabs__item${isActive ? activeItemClass : ''}`} href="#">
-        <span>{ucFirst(cityName)}</span>
-      </a>
+      <LocationsItemLink city={cityName} tabsItem={' tabs__item'} isActive={isActive} />
     </li>
   );
 }
@@ -23,10 +20,8 @@ type LocationsListProps = {
 
 export default function LocationsList({CITIES}: LocationsListProps): JSX.Element {
 
-  const activeItemClass = ' tabs__item--active';
-
   const locationsListItems = CITIES.map((city) => (
-    <LocationsListItems key={city.name} cityName={city.name} isActive={city.isActive} activeItemClass={activeItemClass} />
+    <LocationsListItems key={city.name} cityName={city.name} isActive={city.isActive} />
   ));
 
   return (
