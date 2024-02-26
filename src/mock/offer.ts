@@ -27,7 +27,7 @@ function generateOffer() {
     isFavorite: Boolean(getRandomInteger(0, 1)),
     isPremium: Boolean(getRandomInteger(0, 1)),
     rating: 4.7,
-    description:  getRandomArrayElement<string>(DESCRIPTION),
+    description: getRandomArrayElement<string>(DESCRIPTION),
     bedrooms: getRandomInteger(1, 3),
     goods: Array.from({length: getRandomInteger (1, GOODS.length)}, () => getRandomArrayElement<string>(GOODS)),
     host: {
@@ -41,7 +41,7 @@ function generateOffer() {
       'img/apartment-02.jpg',
       'img/apartment-03.jpg',
       'img/studio-01.jpg',
-      'img/apartment-01.jpg',
+      'img/studio-photos.jpg',
     ],
     maxAdults: getRandomInteger(1, 4),
   };
