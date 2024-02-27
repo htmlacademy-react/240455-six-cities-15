@@ -15,7 +15,7 @@ type User = {
   isPro: boolean;
 }
 
-export type Offer = {
+export type OfferType = {
   id: number;
   title: string;
   type: string;
@@ -34,7 +34,7 @@ export type Offer = {
   maxAdults: number;
 }
 
-export type Review = {
+export type ReviewType = {
   id: number;
   date: string;
   user: User;

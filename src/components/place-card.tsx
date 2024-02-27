@@ -1,10 +1,10 @@
 import { ucFirst } from '../utils/common';
-import { Offer } from '../types.ts';
+import { OfferType } from '../types.ts';
 import PremiumMark from './ui/premium-mark';
 import BookmarkButton from './ui/bookmark-button';
 
 type PlaceCardProps = {
-  offer: Offer;
+  offer: OfferType;
   favorite?: boolean;
   near?: boolean;
 }

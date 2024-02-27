@@ -11,15 +11,12 @@ function OfferInsideList({goodsItem}: OfferInsideListProps): JSX.Element {
 }
 
 type OfferInsideProps = {
-  offerInside: string[];
+  goods: string[];
 }
 
-export default function OfferInside({offerInside}: OfferInsideProps): JSX.Element {
+export default function OfferInside({goods}: OfferInsideProps): JSX.Element {
 
-  const newSet = new Set(offerInside);
-  const goodsItems = Array.from(newSet);
-
-  const offerInsideList = goodsItems.map((goodsItem) => (
+  const offerInsideList = goods.map((goodsItem) => (
     <OfferInsideList key={goodsItem} goodsItem={goodsItem} />
   ));
 

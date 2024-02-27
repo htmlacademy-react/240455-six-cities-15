@@ -1,4 +1,4 @@
-import { Offer, Review } from './types.ts';
+import { OfferType, ReviewType } from './types.ts';
 import { generateOffer } from './mock/offer.ts';
 import { generateReview } from './mock/review';
 
@@ -107,7 +107,8 @@ export const GOODS = [
   'Cabel TV',
 ] as const;
 
-export const offers: Array<Offer> = Array.from({ length: OffersCounts.OffersCount }, () => generateOffer());
-export const offersNear: Array<Offer> = Array.from({ length: OffersCounts.OffersNearCount }, () => generateOffer());
-export const favorites: Array<Offer> = offers.filter((offer) => offer.isFavorite);
-export const reviews: Array<Review> = Array.from({ length: REVIEWS_COUNT }, () => generateReview());
+export const offers: Array<OfferType> = Array.from({ length: OffersCounts.OffersCount }, () => generateOffer());
+export const offersNear: Array<OfferType> = Array.from({ length: OffersCounts.OffersNearCount }, () => generateOffer());
+export const favorites: Array<OfferType> = offers.filter((offer) => offer.isFavorite);
+export const favoriteCount: number = favorites.length;
+export const reviews: Array<ReviewType> = Array.from({ length: REVIEWS_COUNT }, () => generateReview());

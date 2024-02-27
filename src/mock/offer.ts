@@ -29,7 +29,7 @@ function generateOffer() {
     rating: 4.7,
     description: getRandomArrayElement<string>(DESCRIPTION),
     bedrooms: getRandomInteger(1, 3),
-    goods: Array.from({length: getRandomInteger (1, GOODS.length)}, () => getRandomArrayElement<string>(GOODS)),
+    goods: GOODS.slice(getRandomInteger (1, GOODS.length - 1)),
     host: {
       name: 'Oliver Conner',
       avatarUrl: 'https://url-to-image/image.png',

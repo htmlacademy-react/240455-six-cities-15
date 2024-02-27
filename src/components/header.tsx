@@ -1,4 +1,5 @@
 import Logo from './ui/logo';
+import { favoriteCount } from '../const';
 
 export default function Header(): JSX.Element {
   return (
@@ -15,7 +16,7 @@ export default function Header(): JSX.Element {
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
                   <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  <span className="header__favorite-count">3</span>
+                  <span className="header__favorite-count">{favoriteCount}</span>
                 </a>
               </li>
               <li className="header__nav-item">

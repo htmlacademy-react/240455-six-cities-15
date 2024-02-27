@@ -21,7 +21,7 @@ export default function Offer(): JSX.Element {
           <OfferGallery gallery={offer.images} />
           <div className="offer__container container">
             <div className="offer__wrapper">
-              {offer.isPremium ? <PremiumMark offerMark={'offer__mark'} /> : null}
+              {offer.isPremium ? <PremiumMark offerClass /> : null}
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
                   {offer.title}
@@ -52,7 +52,7 @@ export default function Offer(): JSX.Element {
               </div>
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
-                <OfferInside offerInside={offer.goods} />
+                <OfferInside goods={offer.goods} />
               </div>
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>

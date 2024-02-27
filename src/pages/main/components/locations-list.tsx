@@ -9,7 +9,7 @@ type LocationsListItemsProps = {
 function LocationsListItems({cityName, isActive}: LocationsListItemsProps): JSX.Element {
   return (
     <li className="locations__item">
-      <LocationsItemLink city={cityName} tabsItem={' tabs__item'} isActive={isActive} />
+      <LocationsItemLink city={cityName} tabsItem isActive={isActive} />
     </li>
   );
 }

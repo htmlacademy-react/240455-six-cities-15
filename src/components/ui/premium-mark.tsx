@@ -1,9 +1,12 @@
 type PremiumMarkProps = {
-  offerMark?: string;
+  offerClass?: boolean;
 }
 
-export default function PremiumMark({offerMark}: PremiumMarkProps): JSX.Element {
-  return (<div className={`${offerMark ? offerMark : 'place-card__mark'}`}><span>Premium</span></div>);
+export default function PremiumMark({offerClass}: PremiumMarkProps): JSX.Element {
+
+  const className = offerClass ? 'offer' : 'place-card';
+
+  return (<div className={`${className}__mark`}><span>Premium</span></div>);
 }
 
 
