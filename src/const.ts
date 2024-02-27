@@ -6,8 +6,11 @@ export const Setting = {
   OffersCount: 312,
 } as const;
 
-const OFFERS_COUNT = 5 as const;
-export const OFFERS_NEAR_COUNT = 3 as const;
+
+enum OffersCounts {
+  OffersCount = 5,
+  OffersNearCount = 3,
+}
 
 export const REVIEWS_COUNT = 3 as const;
 
@@ -104,7 +107,7 @@ export const GOODS = [
   'Cabel TV',
 ] as const;
 
-export const offers: Array<Offer> = Array.from({ length: OFFERS_COUNT }, () => generateOffer());
-export const offersNear: Array<Offer> = Array.from({ length: OFFERS_NEAR_COUNT }, () => generateOffer());
+export const offers: Array<Offer> = Array.from({ length: OffersCounts.OffersCount }, () => generateOffer());
+export const offersNear: Array<Offer> = Array.from({ length: OffersCounts.OffersNearCount }, () => generateOffer());
 export const favorites: Array<Offer> = offers.filter((offer) => offer.isFavorite);
 export const reviews: Array<Review> = Array.from({ length: REVIEWS_COUNT }, () => generateReview());
