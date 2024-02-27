@@ -1,5 +1,5 @@
 import { favorites } from '../../const.ts';
-import { Offer } from '../../mock/offer.ts';
+import { Offer } from '../../types.ts';
 import Header from '../../components/header.tsx';
 import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
 import PlaceCard from '../../components/place-card.tsx';

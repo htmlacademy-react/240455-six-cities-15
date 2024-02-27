@@ -1,4 +1,5 @@
-import { generateOffer, Offer } from './mock/offer';
+import { Offer } from './types.ts';
+import { generateOffer } from './mock/offer.ts';
 import { generateReview, Review } from './mock/review';
 
 export const Setting = {

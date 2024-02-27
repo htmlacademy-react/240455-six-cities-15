@@ -1,5 +1,5 @@
 import { ucFirst } from '../utils/common';
-import { Offer } from '../mock/offer.ts';
+import { Offer } from '../types.ts';
 import PremiumMark from './ui/premium-mark';
 import BookmarkButton from './ui/bookmark-button';
 

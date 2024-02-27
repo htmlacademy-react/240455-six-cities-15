@@ -1,5 +1,5 @@
-import { reviews } from '../../../const';
-import { Review } from '../../../mock/review';
+import { reviews } from '../../../const.ts';
+import { Review } from '../../../types.ts';
 
 type ReviewsListItemsProps = {
   review: Review;
