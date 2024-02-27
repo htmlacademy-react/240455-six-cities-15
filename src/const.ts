@@ -1,6 +1,6 @@
-import { Offer } from './types.ts';
+import { Offer, Review } from './types.ts';
 import { generateOffer } from './mock/offer.ts';
-import { generateReview, Review } from './mock/review';
+import { generateReview } from './mock/review';
 
 export const Setting = {
   OffersCount: 312,
