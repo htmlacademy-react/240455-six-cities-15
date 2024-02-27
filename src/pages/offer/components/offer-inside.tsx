@@ -1,8 +1,8 @@
-type OfferInsideListItemsProps = {
+type OfferInsideListProps = {
   goodsItem: string;
 }
 
-function OfferInsideListItems({goodsItem}: OfferInsideListItemsProps): JSX.Element {
+function OfferInsideList({goodsItem}: OfferInsideListProps): JSX.Element {
   return (
     <li className="offer__inside-item">
       {goodsItem}
@@ -10,20 +10,22 @@ function OfferInsideListItems({goodsItem}: OfferInsideListItemsProps): JSX.Eleme
   );
 }
 
-type OfferInsideListProps = {
-  offerInsideList: string[];
+type OfferInsideProps = {
+  offerInside: string[];
 }
 
-export default function OfferInside({offerInsideList}: OfferInsideListProps): JSX.Element {
-  const newSet = new Set(offerInsideList);
+export default function OfferInside({offerInside}: OfferInsideProps): JSX.Element {
+
+  const newSet = new Set(offerInside);
   const goodsItems = Array.from(newSet);
-  const offerInsideListItems = goodsItems.map((goodsItem) => (
-    <OfferInsideListItems key={goodsItem} goodsItem={goodsItem} />
+
+  const offerInsideList = goodsItems.map((goodsItem) => (
+    <OfferInsideList key={goodsItem} goodsItem={goodsItem} />
   ));
 
   return (
     <ul className="offer__inside-list">
-      {offerInsideListItems}
+      {offerInsideList}
     </ul>
   );
 }

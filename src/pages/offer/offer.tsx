@@ -26,7 +26,7 @@ export default function Offer(): JSX.Element {
                 <h1 className="offer__name">
                   {offer.title}
                 </h1>
-                <BookmarkButton isFavorite={offer.isFavorite} offerClass={'offer'} width={'31'} height={'33'} />
+                <BookmarkButton isFavorite={offer.isFavorite} offerClass width={31} height={33} />
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
@@ -52,7 +52,7 @@ export default function Offer(): JSX.Element {
               </div>
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
-                <OfferInside offerInsideList={offer.goods} />
+                <OfferInside offerInside={offer.goods} />
               </div>
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
@@ -83,7 +83,7 @@ export default function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map offerClass='offer' />
+          <Map offerClass />
         </section>
         <div className="container">
           <section className="near-places places">

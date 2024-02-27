@@ -1,5 +1,5 @@
 type MapProps = {
-  offerClass?: string;
+  offerClass?: boolean;
 }
 
 export default function Map(offerClass: MapProps): JSX.Element {

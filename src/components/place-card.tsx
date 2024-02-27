@@ -9,7 +9,7 @@ type PlaceCardProps = {
   near?: boolean;
 }
 
-function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.Element {
+export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.Element {
 
   const ratingStyle = {
     width: favorite ? '100%' : '80%'
@@ -37,7 +37,7 @@ function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&nbsp;&#47;&nbsp;night</span>
           </div>
-          <BookmarkButton isFavorite={offer.isFavorite} width={'18'} height={'19'} />
+          <BookmarkButton isFavorite={offer.isFavorite} width={18} height={19} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -53,5 +53,3 @@ function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.Element {
     </article>
   );
 }
-
-export default PlaceCard;

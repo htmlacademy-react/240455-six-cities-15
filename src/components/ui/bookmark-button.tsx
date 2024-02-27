@@ -1,8 +1,8 @@
 type BookmarkButtonProps = {
   isFavorite: boolean;
-  offerClass?: string;
-  width: string;
-  height: string;
+  offerClass?: boolean;
+  width: number;
+  height: number;
 }
 
 export default function BookmarkButton({isFavorite, offerClass, width, height}: BookmarkButtonProps): JSX.Element {
