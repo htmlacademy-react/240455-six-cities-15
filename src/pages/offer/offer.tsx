@@ -21,7 +21,7 @@ export default function Offer(): JSX.Element {
           <OfferGallery gallery={offer.images} />
           <div className="offer__container container">
             <div className="offer__wrapper">
-              {offer.isPremium ? <PremiumMark offerClass /> : null}
+              {offer.isPremium && <PremiumMark offerClass />}
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
                   {offer.title}

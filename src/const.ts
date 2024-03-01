@@ -14,6 +14,8 @@ enum OffersCounts {
 
 export const REVIEWS_COUNT = 3 as const;
 
+export const STARS_COUNT = 5 as const;
+
 export const SORTING = [
   {
     name: 'Popular',
