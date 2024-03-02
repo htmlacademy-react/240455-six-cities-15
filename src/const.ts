@@ -7,6 +7,13 @@ export const Setting = {
 } as const;
 
 
+export enum AppRoute {
+  Favorites = '/favorites',
+  Login = '/login',
+  Offer = '/offer',
+  Root = '/'
+}
+
 enum OffersCounts {
   OffersCount = 5,
   OffersNearCount = 3,
