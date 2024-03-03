@@ -1,18 +1,16 @@
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
-import Header from '../header';
-import Footer from '../../pages/favorites/components/footer';
-import { getLayoutState } from '../../utils/common';
+import { AppRoute } from '../../const.ts';
+import Header from '../header.tsx';
+import Footer from '../../pages/favorites/components/footer.tsx';
+import { getLayoutState } from '../../utils/common.ts';
+import { getAuthorizationStatus } from '../../mock/authorizationStatus.ts';
 
-type LayoutProps = {
-  authorizationStatus: AuthorizationStatus;
-}
-
-export default function Layout({authorizationStatus}: LayoutProps): JSX.Element {
+export default function Layout(): JSX.Element {
 
   const {pathname} = useLocation();
   const {rootClassName, linkClassName, title} = getLayoutState(pathname as AppRoute);
+  const authorizationStatus = getAuthorizationStatus();
 
   return (
     <div className={`page${rootClassName}`}>

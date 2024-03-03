@@ -19,8 +19,6 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export const auth = AuthorizationStatus.Auth;
-
 enum OffersCounts {
   OffersCount = 5,
   OffersNearCount = 3,

@@ -1,6 +1,7 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {AppRoute, auth } from '../../const';
+import {AppRoute} from '../../const';
+import { getAuthorizationStatus } from '../../mock/authorizationStatus.ts';
 import Layout from '../layout/layout';
 import Main from '../../pages/main/main';
 import Offer from '../../pages/offer/offer';
@@ -14,6 +15,7 @@ type AppProps = {
 }
 
 export default function App({offersCount}: AppProps): JSX.Element {
+  const authorizationStatus = getAuthorizationStatus();
 
   return (
     <HelmetProvider>
@@ -21,7 +23,7 @@ export default function App({offersCount}: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Root}
-            element={<Layout authorizationStatus={auth} />}
+            element={<Layout />}
           >
             <Route
               index
@@ -29,20 +31,22 @@ export default function App({offersCount}: AppProps): JSX.Element {
             />
             <Route
               path={AppRoute.Offer}
-              element={<Offer />}
+              element={
+                <Offer authorizationStatus={authorizationStatus}/>
+              }
             />
             <Route
               path={AppRoute.Login}
               element={
-                //<PrivateRoute authorizationStatus={auth}>
+                <PrivateRoute authorizationStatus={authorizationStatus} isReverse>
                   <Login />
-                //</PrivateRoute>
+                </PrivateRoute>
               }
             />
             <Route
               path={AppRoute.Favorites}
               element={
-                <PrivateRoute authorizationStatus={auth}>
+                <PrivateRoute authorizationStatus={authorizationStatus}>
                   <Favorites />
                 </PrivateRoute>
               }

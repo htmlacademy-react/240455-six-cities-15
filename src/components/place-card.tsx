@@ -28,7 +28,7 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
     <article className={`${className}__card place-card`}>
       {offer.isPremium && <PremiumMark/>}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to="#">
+        <Link to='#'>
           <img className="place-card__image" src={offer.previewImage} width={`${favorite ? '150' : '260'}`} height={`${favorite ? '110' : '200'}`} alt="Place image" />
         </Link>
       </div>
@@ -47,7 +47,7 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="#">{ucFirst(offer.title)}</Link>
+          <Link to='#'>{ucFirst(offer.title)}</Link>
         </h2>
         <p className="place-card__type">{ucFirst(offer.type)}</p>
       </div>
