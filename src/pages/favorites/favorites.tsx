@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet-async';
 import { favorites } from '../../const.ts';
 import { OfferType } from '../../types.ts';
 import Header from '../../components/header.tsx';
@@ -42,6 +43,9 @@ export default function Favorites(): JSX.Element {
 
   return (
     <div className="page">
+      <Helmet>
+        <title>6 cities: favorites</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">

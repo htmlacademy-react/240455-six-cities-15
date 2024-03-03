@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet-async';
 import { offersNear, REVIEWS_COUNT } from '../../const';
 import Header from '../../components/header';
 import OfferGallery from './components/offer-gallery';
@@ -15,6 +16,9 @@ const offer = offersNear[0];
 export default function Offer(): JSX.Element {
   return (
     <div className="page">
+      <Helmet>
+        <title>6 cities: offer</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--offer">
         <section className="offer">
