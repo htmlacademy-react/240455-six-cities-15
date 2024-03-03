@@ -1,4 +1,3 @@
-import {Helmet} from 'react-helmet-async';
 import { CITIES, offers } from '../../const';
 import LocationsList from './components/locations-list.tsx';
 import PlacesFound from './components/places-found.tsx';
@@ -12,33 +11,28 @@ type MainProps = {
 
 export default function Main({offersCount}: MainProps): JSX.Element {
   return (
-    <>
-      <Helmet>
-        <title>6 cities</title>
-      </Helmet>
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <LocationsList CITIES={CITIES} />
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <PlacesFound offersCount={offersCount} CITIES={CITIES} />
-              <PlacesSorting />
-              <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer) => (
-                  <PlaceCard
-                    key={offer.id}
-                    offer={offer}
-                  />))}
-              </div>
-            </section>
-            <div className="cities__right-section">
-              <Map />
+    <main className="page__main page__main--index">
+      <h1 className="visually-hidden">Cities</h1>
+      <LocationsList CITIES={CITIES} />
+      <div className="cities">
+        <div className="cities__places-container container">
+          <section className="cities__places places">
+            <h2 className="visually-hidden">Places</h2>
+            <PlacesFound offersCount={offersCount} CITIES={CITIES} />
+            <PlacesSorting />
+            <div className="cities__places-list places__list tabs__content">
+              {offers.map((offer) => (
+                <PlaceCard
+                  key={offer.id}
+                  offer={offer}
+                />))}
             </div>
+          </section>
+          <div className="cities__right-section">
+            <Map />
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }
