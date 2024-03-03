@@ -1,22 +1,12 @@
 import {Helmet} from 'react-helmet-async';
-import Logo from '../../components/ui/logo';
 import LocationsItemLink from '../../components/ui/locations-item-link';
 
 function Login(): JSX.Element {
   return (
-    <div className="page page--gray page--login">
+    <>
       <Helmet>
         <title>6 cities: authorization</title>
       </Helmet>
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <Logo width={81} height={41}/>
-            </div>
-          </div>
-        </div>
-      </header>
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
@@ -40,7 +30,7 @@ function Login(): JSX.Element {
           </section>
         </div>
       </main>
-    </div>
+    </>
   );
 }
 

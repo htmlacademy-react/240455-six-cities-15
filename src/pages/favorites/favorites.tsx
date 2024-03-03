@@ -1,7 +1,6 @@
 import {Helmet} from 'react-helmet-async';
 import { favorites } from '../../const.ts';
 import { OfferType } from '../../types.ts';
-import Header from '../../components/header.tsx';
 import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
 import PlaceCard from '../../components/place-card.tsx';
 import Footer from './components/footer.tsx';
@@ -42,11 +41,10 @@ export default function Favorites(): JSX.Element {
   const favoritesList = cities.map((city) => <FavoritesInCity key={city} city={city} offers={favoritesGroupped[city]} />);
 
   return (
-    <div className="page">
+    <>
       <Helmet>
         <title>6 cities: favorites</title>
       </Helmet>
-      <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
           <section className="favorites">
@@ -58,6 +56,6 @@ export default function Favorites(): JSX.Element {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
