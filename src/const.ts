@@ -6,7 +6,6 @@ export const Setting = {
   OffersCount: 312,
 } as const;
 
-
 export enum AppRoute {
   Favorites = '/favorites',
   Login = '/login',
@@ -19,6 +18,8 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const auth = AuthorizationStatus.Auth;
 
 enum OffersCounts {
   OffersCount = 5,

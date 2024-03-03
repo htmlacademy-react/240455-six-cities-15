@@ -1,6 +1,6 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {AppRoute, auth } from '../../const';
 import Layout from '../layout/layout';
 import Main from '../../pages/main/main';
 import Offer from '../../pages/offer/offer';
@@ -14,8 +14,6 @@ type AppProps = {
 }
 
 export default function App({offersCount}: AppProps): JSX.Element {
-
-  const auth = AuthorizationStatus.NoAuth;
 
   return (
     <HelmetProvider>
