@@ -4,7 +4,7 @@ type LogoProps = {
   footerClass?: boolean;
   width: number;
   height: number;
-  linkClassName: string;
+  linkClassName?: string;
 }
 
 export default function Logo({footerClass, width, height, linkClassName}: LogoProps): JSX.Element {
