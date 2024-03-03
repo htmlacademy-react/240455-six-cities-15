@@ -15,7 +15,7 @@ type AppProps = {
 
 export default function App({offersCount}: AppProps): JSX.Element {
 
-  const auth = AuthorizationStatus.Auth;
+  const auth = AuthorizationStatus.NoAuth;
 
   return (
     <HelmetProvider>
@@ -36,9 +36,9 @@ export default function App({offersCount}: AppProps): JSX.Element {
             <Route
               path={AppRoute.Login}
               element={
-                <PrivateRoute authorizationStatus={auth}>
+                //<PrivateRoute authorizationStatus={auth}>
                   <Login />
-                </PrivateRoute>
+                //</PrivateRoute>
               }
             />
             <Route

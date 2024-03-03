@@ -42,7 +42,7 @@ export default function Layout({authorizationStatus}: LayoutProps): JSX.Element 
       </Helmet>
       <Header linkClassName={linkClassName} authorizationStatus={authorizationStatus} pathname={pathname as AppRoute}/>
       <Outlet />
-      {pathname as AppRoute === AppRoute.Favorites && < Footer />}
+      {pathname as AppRoute === AppRoute.Favorites && <Footer />}
     </div>
   );
 }
