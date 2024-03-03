@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import { ucFirst } from '../utils/common';
 import { OfferType } from '../types.ts';
 import PremiumMark from './ui/premium-mark';
@@ -27,9 +28,9 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
     <article className={`${className}__card place-card`}>
       {offer.isPremium && <PremiumMark/>}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <a href="#">
+        <Link to="#">
           <img className="place-card__image" src={offer.previewImage} width={`${favorite ? '150' : '260'}`} height={`${favorite ? '110' : '200'}`} alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className={`${favorite ? 'favorites__card-info ' : ''}place-card__info`}>
         <div className="place-card__price-wrapper">
@@ -46,7 +47,7 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{ucFirst(offer.title)}</a>
+          <Link to="#">{ucFirst(offer.title)}</Link>
         </h2>
         <p className="place-card__type">{ucFirst(offer.type)}</p>
       </div>

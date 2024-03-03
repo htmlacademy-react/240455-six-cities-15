@@ -8,9 +8,7 @@ function Login(): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <Logo width={81} height={41}/>
-              </a>
+              <Logo width={81} height={41}/>
             </div>
           </div>
         </div>
