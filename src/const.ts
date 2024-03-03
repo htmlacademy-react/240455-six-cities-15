@@ -14,6 +14,12 @@ export enum AppRoute {
   Root = '/'
 }
 
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
+
 enum OffersCounts {
   OffersCount = 5,
   OffersNearCount = 3,
