@@ -6,7 +6,7 @@ const generateOfferId = createIdGenerator();
 function generateOffer() {
 
   return {
-    id: generateOfferId(),
+    id: generateOfferId().toString(),
     title: getRandomArrayElement<string>(TITLES),
     type: getRandomArrayElement<string>(TYPES),
     price: getRandomInteger(20, 500),
