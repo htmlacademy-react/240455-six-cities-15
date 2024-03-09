@@ -20,7 +20,6 @@ export type TypeOffer = {
   title: string;
   type: string;
   price: number;
-  //previewImage: string;
   city: TypeCity;
   location: TypeLocation;
   isFavorite: boolean;

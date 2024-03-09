@@ -1,8 +1,53 @@
-import { CITIES, TITLES, TYPES, DESCRIPTION, GOODS } from '../const.ts';
+import { CITIES } from '../const.ts';
 import { getRandomArrayElement, createIdGenerator, getRandomInteger } from '../utils/common.ts';
+import { TypeOffer, TypeOfferCard } from '../types.ts';
 
 const generateOfferId = createIdGenerator();
 const generateOfferPreviewId = createIdGenerator();
+
+
+const TITLES = [
+  'Loft Studio in the Central Area',
+  'The house among olive',
+  'Penthouse, 4-5 rooms + 5 balconies',
+  'House in countryside',
+  'Waterfront with extraordinary view',
+  'Tile House',
+  'Amazing and Extremely Central Flat',
+  'Perfectly located Castro',
+  'Beautiful & luxurious apartment at great location',
+] as const;
+
+const TYPES = [
+  'apartment',
+  'room',
+  'hotel',
+  'house',
+] as const;
+
+export const DESCRIPTION = [
+  'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+  'The building is green and from 18th century.',
+  'An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+] as const;
+
+const GOODS = [
+  'Wi-Fi',
+  'Heating',
+  'Kitchen',
+  'Fridge',
+  'Washing machine',
+  'Coffee machine',
+  'Towels',
+  'Baby seat',
+  'Cabel TV',
+] as const;
+
+
+enum OffersCounts {
+  OffersCount = 4,
+  OffersNearCount = 3,
+}
 
 function generateOfferPreview() {
 
@@ -32,7 +77,6 @@ function generateOfferPreview() {
 }
 
 function generateOffer() {
-
   return {
     id: generateOfferId().toString(),
     title: getRandomArrayElement<string>(TITLES),
@@ -74,4 +118,9 @@ function generateOffer() {
   };
 }
 
-export { generateOffer, generateOfferPreview };
+export const offers: Array<TypeOfferCard> = Array.from({ length: OffersCounts.OffersCount }, () => generateOfferPreview());
+export const offer: TypeOffer = generateOffer();
+export const offersNear: Array<TypeOfferCard> = Array.from({ length: OffersCounts.OffersNearCount }, () => generateOfferPreview());
+export const favorites: Array<TypeOfferCard> = offers.filter((item) => item.isFavorite);
+export const favoriteCount: number = favorites.length;
+

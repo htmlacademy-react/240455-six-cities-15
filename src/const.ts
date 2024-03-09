@@ -1,7 +1,3 @@
-import { TypeOffer, TypeOfferCard, TypeReview } from './types.ts';
-import { generateOffer, generateOfferPreview } from './mock/offer.ts';
-import { generateReview } from './mock/review';
-
 export const Setting = {
   OffersCount: 312,
 } as const;
@@ -18,13 +14,6 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
-
-enum OffersCounts {
-  OffersCount = 4,
-  OffersNearCount = 3,
-}
-
-export const REVIEWS_COUNT = 3 as const;
 
 export const STARS_COUNT = 5 as const;
 
@@ -83,47 +72,3 @@ export type City = {
   name: string;
   isActive: boolean;
 };
-
-export const TITLES = [
-  'Loft Studio in the Central Area',
-  'The house among olive',
-  'Penthouse, 4-5 rooms + 5 balconies',
-  'House in countryside',
-  'Waterfront with extraordinary view',
-  'Tile House',
-  'Amazing and Extremely Central Flat',
-  'Perfectly located Castro',
-  'Beautiful & luxurious apartment at great location',
-] as const;
-
-export const TYPES = [
-  'apartment',
-  'room',
-  'hotel',
-  'house',
-] as const;
-
-export const DESCRIPTION = [
-  'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
-  'The building is green and from 18th century.',
-  'An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
-] as const;
-
-export const GOODS = [
-  'Wi-Fi',
-  'Heating',
-  'Kitchen',
-  'Fridge',
-  'Washing machine',
-  'Coffee machine',
-  'Towels',
-  'Baby seat',
-  'Cabel TV',
-] as const;
-
-export const offers: Array<TypeOfferCard> = Array.from({ length: OffersCounts.OffersCount }, () => generateOfferPreview());
-export const offer: TypeOffer = generateOffer();
-export const offersNear: Array<TypeOfferCard> = Array.from({ length: OffersCounts.OffersNearCount }, () => generateOfferPreview());
-export const favorites: Array<TypeOfferCard> = offers.filter((item) => item.isFavorite);
-export const favoriteCount: number = favorites.length;
-export const reviews: Array<TypeReview> = Array.from({ length: REVIEWS_COUNT }, () => generateReview());

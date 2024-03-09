@@ -1,4 +1,5 @@
-import { CITIES, offers } from '../../const';
+import { CITIES } from '../../const';
+import { TypeOfferCard } from '../../types.ts';
 import LocationsList from './components/locations-list.tsx';
 import PlacesFound from './components/places-found.tsx';
 import PlacesSorting from './components/places-sorting.tsx';
@@ -7,9 +8,10 @@ import Map from '../../components/map.tsx';
 
 type MainProps = {
   offersCount: number;
+  offers: TypeOfferCard[];
 }
 
-export default function Main({offersCount}: MainProps): JSX.Element {
+export default function Main({offersCount, offers}: MainProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>

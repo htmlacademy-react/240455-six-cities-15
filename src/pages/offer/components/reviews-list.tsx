@@ -1,4 +1,3 @@
-import { reviews } from '../../../const.ts';
 import { TypeReview } from '../../../types.ts';
 
 type ReviewsListItemsProps = {
@@ -32,7 +31,11 @@ function ReviewsListItems({review}: ReviewsListItemsProps): JSX.Element {
   );
 }
 
-export default function ReviewsList(): JSX.Element {
+type ReviewsListProps = {
+  reviews: TypeReview[];
+}
+
+export default function ReviewsList({reviews}: ReviewsListProps): JSX.Element {
 
   const reviewsListItems = reviews.map((review) => (
     <ReviewsListItems key={review.id} review={review} />

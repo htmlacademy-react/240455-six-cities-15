@@ -1,4 +1,6 @@
-import { offer, offersNear, REVIEWS_COUNT, AuthorizationStatus } from '../../const';
+import { AuthorizationStatus } from '../../const';
+import {REVIEWS_COUNT} from '../../mock/review.ts';
+import { TypeOffer, TypeOfferCard, TypeReview } from '../../types';
 import OfferGallery from './components/offer-gallery';
 import PremiumMark from '../../components/ui/premium-mark';
 import BookmarkButton from '../../components/ui/bookmark-button';
@@ -9,10 +11,13 @@ import Map from '../../components/map';
 import PlaceCard from '../../components/place-card';
 
 type OfferProps = {
+  offer: TypeOffer;
+  offersNear: TypeOfferCard[];
+  reviews: TypeReview[];
   authorizationStatus: AuthorizationStatus;
 }
 
-export default function Offer({authorizationStatus}: OfferProps): JSX.Element {
+export default function Offer({ offer, offersNear, reviews, authorizationStatus}: OfferProps): JSX.Element {
   return (
     <main className="page__main page__main--offer">
       <section className="offer">
@@ -76,7 +81,7 @@ export default function Offer({authorizationStatus}: OfferProps): JSX.Element {
             </div>
             <section className="offer__reviews reviews">
               <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{REVIEWS_COUNT}</span></h2>
-              <ReviewsList />
+              <ReviewsList reviews={reviews} />
               {authorizationStatus === AuthorizationStatus.Auth &&
               <ReviewsForm />}
             </section>

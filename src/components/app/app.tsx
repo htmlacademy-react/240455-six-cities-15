@@ -1,6 +1,7 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {AppRoute} from '../../const';
+import { TypeOffer, TypeOfferCard, TypeReview } from '../../types.ts';
 import { getAuthorizationStatus } from '../../mock/authorizationStatus.ts';
 import Layout from '../layout/layout';
 import Main from '../../pages/main/main';
@@ -12,9 +13,15 @@ import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
   offersCount: number;
+  offer: TypeOffer;
+  offers: TypeOfferCard[];
+  offersNear: TypeOfferCard[];
+  favorites: TypeOfferCard[];
+  favoriteCount: number;
+  reviews: TypeReview[];
 }
 
-export default function App({offersCount}: AppProps): JSX.Element {
+export default function App({offersCount, offer, offers, offersNear, favorites, favoriteCount, reviews}: AppProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
 
   return (
@@ -23,16 +30,16 @@ export default function App({offersCount}: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Root}
-            element={<Layout />}
+            element={<Layout favoriteCount={favoriteCount} />}
           >
             <Route
               index
-              element={<Main offersCount={offersCount} />}
+              element={<Main offersCount={offersCount} offers={offers} />}
             />
             <Route
               path={AppRoute.Offer}
               element={
-                <Offer authorizationStatus={authorizationStatus}/>
+                <Offer authorizationStatus={authorizationStatus} offer={offer} offersNear={offersNear} reviews={reviews} />
               }
             />
             <Route
@@ -47,7 +54,7 @@ export default function App({offersCount}: AppProps): JSX.Element {
               path={AppRoute.Favorites}
               element={
                 <PrivateRoute authorizationStatus={authorizationStatus}>
-                  <Favorites />
+                  <Favorites favorites={favorites} />
                 </PrivateRoute>
               }
             />
