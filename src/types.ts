@@ -1,43 +1,47 @@
-type Location = {
+type TypeLocation = {
   latitude: number;
   longitude: number;
   zoom: number;
 }
 
-type City = {
+type TypeCity = {
   name: string;
-  location: Location;
+  location: TypeLocation;
 }
 
-type User = {
+type TypeUser = {
   name: string;
   avatarUrl: string;
   isPro: boolean;
 }
 
-export type OfferType = {
+export type TypeOffer = {
   id: string;
   title: string;
   type: string;
   price: number;
-  previewImage: string;
-  city: City;
-  location: Location;
+  //previewImage: string;
+  city: TypeCity;
+  location: TypeLocation;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
   description: string;
   bedrooms: number;
   goods: string[];
-  host: User;
+  host: TypeUser;
   images: string[];
   maxAdults: number;
 }
 
-export type ReviewType = {
+export type TypeOfferCard = Omit<TypeOffer, 'maxAdults' | 'images' | 'host' | 'goods' | 'bedrooms' | 'description'> & {
+  previewImage: string;
+};
+
+export type TypeReview = {
   id: number;
   date: string;
-  user: User;
+  user: TypeUser;
   comment: string;
   rating: number;
 }

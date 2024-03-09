@@ -1,4 +1,4 @@
-import { offers, offersNear, REVIEWS_COUNT, AuthorizationStatus } from '../../const';
+import { offer, offersNear, REVIEWS_COUNT, AuthorizationStatus } from '../../const';
 import OfferGallery from './components/offer-gallery';
 import PremiumMark from '../../components/ui/premium-mark';
 import BookmarkButton from '../../components/ui/bookmark-button';
@@ -13,8 +13,6 @@ type OfferProps = {
 }
 
 export default function Offer({authorizationStatus}: OfferProps): JSX.Element {
-  const offer = offers[0];
-
   return (
     <main className="page__main page__main--offer">
       <section className="offer">

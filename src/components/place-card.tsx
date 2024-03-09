@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom';
 import { ucFirst } from '../utils/common';
-import { OfferType } from '../types.ts';
+import { TypeOfferCard } from '../types.ts';
 import PremiumMark from './ui/premium-mark';
 import BookmarkButton from './ui/bookmark-button';
 
 type PlaceCardProps = {
-  offer: OfferType;
+  offer: TypeOfferCard;
   favorite?: boolean;
   near?: boolean;
 }

@@ -1,15 +1,15 @@
 import { favorites } from '../../const.ts';
-import { OfferType } from '../../types.ts';
+import { TypeOfferCard } from '../../types.ts';
 import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
 import PlaceCard from '../../components/place-card.tsx';
 
-const favoritesGroupped: { [city: string]: OfferType[] } = favorites.reduce((result, favorite) => ({
+const favoritesGroupped: { [city: string]: TypeOfferCard[] } = favorites.reduce((result, favorite) => ({
   ...result, [favorite.city.name]: [...(result[favorite.city.name] || []), favorite]
-}), {} as { [city: string]: OfferType[] });
+}), {} as { [city: string]: TypeOfferCard[] });
 
 type FavoritesInCityProps = {
   city: string;
-  offers: OfferType[];
+  offers: TypeOfferCard[];
 }
 
 function FavoritesInCity({city, offers}: FavoritesInCityProps): JSX.Element {

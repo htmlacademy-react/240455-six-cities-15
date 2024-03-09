@@ -1,5 +1,5 @@
-import { OfferType, ReviewType } from './types.ts';
-import { generateOffer } from './mock/offer.ts';
+import { TypeOffer, TypeOfferCard, TypeReview } from './types.ts';
+import { generateOffer, generateOfferPreview } from './mock/offer.ts';
 import { generateReview } from './mock/review';
 
 export const Setting = {
@@ -20,7 +20,7 @@ export enum AuthorizationStatus {
 }
 
 enum OffersCounts {
-  OffersCount = 5,
+  OffersCount = 4,
   OffersNearCount = 3,
 }
 
@@ -121,8 +121,9 @@ export const GOODS = [
   'Cabel TV',
 ] as const;
 
-export const offers: Array<OfferType> = Array.from({ length: OffersCounts.OffersCount }, () => generateOffer());
-export const offersNear: Array<OfferType> = Array.from({ length: OffersCounts.OffersNearCount }, () => generateOffer());
-export const favorites: Array<OfferType> = offers.filter((offer) => offer.isFavorite);
+export const offers: Array<TypeOfferCard> = Array.from({ length: OffersCounts.OffersCount }, () => generateOfferPreview());
+export const offer: TypeOffer = generateOffer();
+export const offersNear: Array<TypeOfferCard> = Array.from({ length: OffersCounts.OffersNearCount }, () => generateOfferPreview());
+export const favorites: Array<TypeOfferCard> = offers.filter((item) => item.isFavorite);
 export const favoriteCount: number = favorites.length;
-export const reviews: Array<ReviewType> = Array.from({ length: REVIEWS_COUNT }, () => generateReview());
+export const reviews: Array<TypeReview> = Array.from({ length: REVIEWS_COUNT }, () => generateReview());

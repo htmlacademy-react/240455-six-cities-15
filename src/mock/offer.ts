@@ -2,6 +2,34 @@ import { CITIES, TITLES, TYPES, DESCRIPTION, GOODS } from '../const.ts';
 import { getRandomArrayElement, createIdGenerator, getRandomInteger } from '../utils/common.ts';
 
 const generateOfferId = createIdGenerator();
+const generateOfferPreviewId = createIdGenerator();
+
+function generateOfferPreview() {
+
+  return {
+    id: generateOfferPreviewId().toString(),
+    title: getRandomArrayElement<string>(TITLES),
+    type: getRandomArrayElement<string>(TYPES),
+    price: getRandomInteger(20, 500),
+    previewImage: `https://15.design.htmlacademy.pro/static/hotel/${getRandomInteger(1, 20)}.jpg`,
+    city: {
+      name: getRandomArrayElement<string>(CITIES.map((city) => (city.name))),
+      location: {
+        latitude: 48.85661,
+        longitude: 2.351499,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 48.868610000000004,
+      longitude: 2.342499,
+      zoom: 16
+    },
+    isFavorite: Boolean(getRandomInteger(0, 1)),
+    isPremium: Boolean(getRandomInteger(0, 1)),
+    rating: 4.7,
+  };
+}
 
 function generateOffer() {
 
@@ -10,7 +38,6 @@ function generateOffer() {
     title: getRandomArrayElement<string>(TITLES),
     type: getRandomArrayElement<string>(TYPES),
     price: getRandomInteger(20, 500),
-    previewImage: `https://15.design.htmlacademy.pro/static/hotel/${getRandomInteger(1, 20)}.jpg`,
     city: {
       name: getRandomArrayElement<string>(CITIES.map((city) => (city.name))),
       location: {
@@ -47,4 +74,4 @@ function generateOffer() {
   };
 }
 
-export { generateOffer };
+export { generateOffer, generateOfferPreview };
