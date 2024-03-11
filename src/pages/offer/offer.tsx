@@ -8,7 +8,7 @@ import OfferInside from './components/offer-inside';
 import ReviewsList from './components/reviews-list';
 import ReviewsForm from './components/reviews-form';
 import Map from '../../components/map';
-import PlaceCard from '../../components/place-card';
+import PlacesList from '../../components/places-list.tsx';
 
 type OfferProps = {
   offer: TypeOffer;
@@ -92,14 +92,7 @@ export default function Offer({ offer, offersNear, reviews, authorizationStatus}
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <div className="near-places__list places__list">
-            {offersNear.map((offerNear) => (
-              <PlaceCard
-                key={offerNear.id}
-                offer={offerNear}
-                near
-              />))}
-          </div>
+          <PlacesList offers={offersNear} near />
         </section>
       </div>
     </main>

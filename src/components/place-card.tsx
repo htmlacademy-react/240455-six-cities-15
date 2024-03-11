@@ -1,3 +1,4 @@
+//import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { ucFirst } from '../utils/common';
 import { TypeOfferCard } from '../types.ts';
@@ -23,6 +24,8 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
   } else if (near) {
     className = 'near-places';
   }
+
+  //const [card, setCardState] = useState(false);
 
   return (
     <article className={`${className}__card place-card`}>
