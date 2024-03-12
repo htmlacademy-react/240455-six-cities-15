@@ -39,7 +39,11 @@ export default function App({offersCount, offer, offers, offersNear, favorites, 
             <Route
               path={AppRoute.Offer}
               element={
-                <Offer authorizationStatus={authorizationStatus} offer={offer} offersNear={offersNear} reviews={reviews} />
+                <Offer authorizationStatus={authorizationStatus} offer={offer} offersNear={offersNear} reviews={reviews}
+                  onReview={() => {
+                    throw new Error('Function \'onReview\' isn\'t implemented.');
+                  }}
+                />
               }
             />
             <Route

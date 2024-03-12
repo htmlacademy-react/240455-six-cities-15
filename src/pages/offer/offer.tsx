@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { AuthorizationStatus } from '../../const';
 import {REVIEWS_COUNT} from '../../mock/review.ts';
 import { TypeOffer, TypeOfferCard, TypeReview } from '../../types';
@@ -15,9 +16,10 @@ type OfferProps = {
   offersNear: TypeOfferCard[];
   reviews: TypeReview[];
   authorizationStatus: AuthorizationStatus;
+  onReview: (review: ChangeEvent<HTMLTextAreaElement> | string, starCount: ChangeEvent<HTMLInputElement> | string) => void;
 }
 
-export default function Offer({ offer, offersNear, reviews, authorizationStatus}: OfferProps): JSX.Element {
+export default function Offer({ offer, offersNear, reviews, authorizationStatus, onReview}: OfferProps): JSX.Element {
   return (
     <main className="page__main page__main--offer">
       <section className="offer">
@@ -83,7 +85,7 @@ export default function Offer({ offer, offersNear, reviews, authorizationStatus}
               <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{REVIEWS_COUNT}</span></h2>
               <ReviewsList reviews={reviews} />
               {authorizationStatus === AuthorizationStatus.Auth &&
-              <ReviewsForm />}
+              <ReviewsForm onReview={onReview}/>}
             </section>
           </div>
         </div>
