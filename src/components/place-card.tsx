@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ucFirst } from '../utils/common';
-import { TypeOfferCard } from '../types.ts';
+import { TypeOffer } from '../types.ts';
 import PremiumMark from './ui/premium-mark';
 import BookmarkButton from './ui/bookmark-button';
 
 type PlaceCardProps = {
-  offer: TypeOfferCard;
+  offer: TypeOffer;
   favorite?: boolean;
   near?: boolean;
 }
@@ -33,7 +33,7 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
     <article onMouseEnter={handleOfferEnter} onMouseLeave={handleOfferLeave} className={`${className}__card place-card`}>
       {offer.isPremium && <PremiumMark/>}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to='#'>
+        <Link to=''>
           <img className="place-card__image" src={offer.previewImage} width={`${favorite ? '150' : '260'}`} height={`${favorite ? '110' : '200'}`} alt="Place image" />
         </Link>
       </div>

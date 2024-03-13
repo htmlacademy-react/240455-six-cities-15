@@ -1,8 +1,8 @@
-import { TypeOfferCard } from '../types.ts';
+import { TypeOffer } from '../types.ts';
 import PlaceCard from './place-card';
 
 type PlacesListProps = {
-  offers: TypeOfferCard[];
+  offers: TypeOffer[];
   near?: boolean;
 }
 

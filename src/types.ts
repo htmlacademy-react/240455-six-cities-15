@@ -20,6 +20,7 @@ export type TypeOffer = {
   title: string;
   type: string;
   price: number;
+  previewImage: string;
   city: TypeCity;
   location: TypeLocation;
   isFavorite: boolean;
@@ -32,10 +33,6 @@ export type TypeOffer = {
   images: string[];
   maxAdults: number;
 }
-
-export type TypeOfferCard = Omit<TypeOffer, 'maxAdults' | 'images' | 'host' | 'goods' | 'bedrooms' | 'description'> & {
-  previewImage: string;
-};
 
 export type TypeReview = {
   id: number;

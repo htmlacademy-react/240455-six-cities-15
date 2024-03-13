@@ -1,7 +1,7 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {AppRoute} from '../../const';
-import { TypeOffer, TypeOfferCard, TypeReview } from '../../types.ts';
+import { TypeOffer, TypeReview } from '../../types.ts';
 import { getAuthorizationStatus } from '../../mock/authorizationStatus.ts';
 import Layout from '../layout/layout';
 import Main from '../../pages/main/main';
@@ -13,16 +13,14 @@ import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
   offersCount: number;
-  offer: TypeOffer;
-  offers: TypeOfferCard[];
-  offersNear: TypeOfferCard[];
-  favorites: TypeOfferCard[];
-  favoriteCount: number;
+  offers: TypeOffer[];
   reviews: TypeReview[];
 }
 
-export default function App({offersCount, offer, offers, offersNear, favorites, favoriteCount, reviews}: AppProps): JSX.Element {
+export default function App({offersCount, offers, reviews}: AppProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
+  const favorites: Array<TypeOffer> = offers.filter((item) => item.isFavorite);
+  const favoriteCount: number = favorites.length;
 
   return (
     <HelmetProvider>
@@ -39,7 +37,7 @@ export default function App({offersCount, offer, offers, offersNear, favorites, 
             <Route
               path={AppRoute.Offer}
               element={
-                <Offer authorizationStatus={authorizationStatus} offer={offer} offersNear={offersNear} reviews={reviews}
+                <Offer authorizationStatus={authorizationStatus} offers={offers} reviews={reviews}
                   onReview={() => {
                     throw new Error('Function \'onReview\' isn\'t implemented.');
                   }}
