@@ -15,6 +15,8 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export const STARS_INITIAL: string = '0';
+
 export const STARS_COUNT = 5 as const;
 
 export const SORTING = [
@@ -72,3 +74,7 @@ export type City = {
   name: string;
   isActive: boolean;
 };
+
+export const REVIEW_MIN_LENGTH = 50 as const;
+export const REVIEW_MAX_LENGTH = 300 as const;
+

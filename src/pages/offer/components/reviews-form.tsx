@@ -1,4 +1,5 @@
 import {useState, FormEvent, ChangeEvent } from 'react';
+import { STARS_INITIAL, REVIEW_MIN_LENGTH, REVIEW_MAX_LENGTH } from '../../../const';
 import ReviewsRatingForm from './reviews-rating';
 
 type ReviewsProps = {
@@ -10,9 +11,9 @@ export default function ReviewsForm({onReview}: ReviewsProps): JSX.Element {
   const [review, setReview] = useState('');
   const handleReview = (event: ChangeEvent<HTMLTextAreaElement>) => setReview(event.target.value);
 
-  const [starCount, setStarCount] = useState('0');
+  const [starCount, setStarCount] = useState(STARS_INITIAL);
 
-  const isDisable: boolean = review.length < 50 || review.length > 300 || starCount === '0';
+  const isDisable: boolean = review.length < REVIEW_MIN_LENGTH || review.length > REVIEW_MAX_LENGTH || starCount === STARS_INITIAL;
 
   return (
     <form className="reviews__form form" action="#" method="post"
