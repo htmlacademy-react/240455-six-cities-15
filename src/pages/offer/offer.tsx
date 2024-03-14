@@ -10,6 +10,7 @@ import ReviewsList from './components/reviews-list';
 import ReviewsForm from './components/reviews-form';
 import Map from '../../components/map';
 import PlacesList from '../../components/places-list.tsx';
+import RatingStars from '../../components/ui/rating-stars.tsx';
 import NotFound from '../not-found/not-found.tsx';
 import { useParams } from 'react-router-dom';
 
@@ -42,10 +43,7 @@ export default function Offer({ offers, reviews, authorizationStatus, onReview}:
               <BookmarkButton isFavorite={currentOffer.isFavorite} offerClass width={31} height={33} />
             </div>
             <div className="offer__rating rating">
-              <div className="offer__stars rating__stars">
-                <span style={{width:'80%'}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
+              <RatingStars rating={currentOffer.rating} offerClass />
               <span className="offer__rating-value rating__value">{currentOffer.rating}</span>
             </div>
             <ul className="offer__features">

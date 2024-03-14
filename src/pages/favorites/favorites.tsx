@@ -1,10 +1,10 @@
-import { TypeOfferCard } from '../../types.ts';
+import { TypeOffer } from '../../types.ts';
 import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
 import PlaceCard from '../../components/place-card.tsx';
 
 type FavoritesInCityProps = {
   city: string;
-  offers: TypeOfferCard[];
+  offers: TypeOffer[];
 }
 
 function FavoritesInCity({city, offers }: FavoritesInCityProps): JSX.Element {
@@ -28,14 +28,14 @@ function FavoritesInCity({city, offers }: FavoritesInCityProps): JSX.Element {
 }
 
 type FavoritesProps = {
-  favorites: TypeOfferCard[];
+  favorites: TypeOffer[];
 }
 
 export default function Favorites({favorites}: FavoritesProps): JSX.Element {
 
-  const favoritesGroupped: { [city: string]: TypeOfferCard[] } = favorites.reduce((result, favorite) => ({
+  const favoritesGroupped: { [city: string]: TypeOffer[] } = favorites.reduce((result, favorite) => ({
     ...result, [favorite.city.name]: [...(result[favorite.city.name] || []), favorite]
-  }), {} as { [city: string]: TypeOfferCard[] });
+  }), {} as { [city: string]: TypeOffer[] });
 
 
   const cities = Object.keys(favoritesGroupped);

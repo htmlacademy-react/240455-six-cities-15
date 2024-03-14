@@ -67,7 +67,7 @@ function generateOffer() {
     },
     isFavorite: Boolean(getRandomInteger(0, 1)),
     isPremium: Boolean(getRandomInteger(0, 1)),
-    rating: 4.7,
+    rating: 4,
     description: getRandomArrayElement<string>(DESCRIPTION),
     bedrooms: getRandomInteger(1, 3),
     goods: GOODS.slice(getRandomInteger (1, GOODS.length - 1)),

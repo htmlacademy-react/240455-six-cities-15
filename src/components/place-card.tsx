@@ -4,6 +4,7 @@ import { ucFirst } from '../utils/common';
 import { TypeOffer } from '../types.ts';
 import PremiumMark from './ui/premium-mark';
 import BookmarkButton from './ui/bookmark-button';
+import RatingStars from './ui/rating-stars.tsx';
 
 type PlaceCardProps = {
   offer: TypeOffer;
@@ -12,11 +13,6 @@ type PlaceCardProps = {
 }
 
 export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.Element {
-
-  const ratingStyle = {
-    width: favorite ? '100%' : '80%'
-  };
-
   let className = 'cities';
 
   if (favorite) {
@@ -46,10 +42,7 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
           <BookmarkButton isFavorite={offer.isFavorite} width={18} height={19} />
         </div>
         <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={ratingStyle}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
+          <RatingStars rating={offer.rating} />
         </div>
         <h2 className="place-card__name">
           <Link to='#'>{ucFirst(offer.title)}</Link>
