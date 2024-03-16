@@ -40,7 +40,7 @@ export default function App({offersCount, offers, reviews}: AppProps): JSX.Eleme
               }
             />
             <Route
-              path={AppRoute.Offer}
+              path={`${AppRoute.Offer}/:id`}
               element={
                 <Offer
                   authorizationStatus={authorizationStatus}

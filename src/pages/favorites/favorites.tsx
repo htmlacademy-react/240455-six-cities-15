@@ -1,6 +1,6 @@
 import { TypeOffer } from '../../types.ts';
 import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
-import PlaceCard from '../../components/place-card.tsx';
+import PlacesList from '../../components/places-list.tsx';
 
 type FavoritesInCityProps = {
   city: string;
@@ -15,14 +15,7 @@ function FavoritesInCity({city, offers }: FavoritesInCityProps): JSX.Element {
           <LocationsItemLink city={city} />
         </div>
       </div>
-      <div className="favorites__places">
-        {offers.map((offer) => (
-          <PlaceCard
-            key={offer.id}
-            offer={offer}
-            favorite
-          />))}
-      </div>
+      <PlacesList offers={offers} favorites />
     </li>
   );
 }

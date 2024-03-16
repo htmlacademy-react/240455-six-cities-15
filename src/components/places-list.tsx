@@ -6,9 +6,10 @@ import PlaceCard from './place-card';
 type PlacesListProps = {
   offers: TypeOffer[];
   near?: boolean;
+  favorites?: boolean;
 }
 
-export default function PlacesList({offers, near}: PlacesListProps): JSX.Element {
+export default function PlacesList({offers, near, favorites}: PlacesListProps): JSX.Element {
 
   const [activeOffer, setActiveOffer] = useState<Nullable<TypeOffer>>(null);
   const handleActiveOffer = (offer?: TypeOffer) => setActiveOffer(offer || null);
@@ -17,6 +18,8 @@ export default function PlacesList({offers, near}: PlacesListProps): JSX.Element
 
   if (near) {
     className = 'near-places__list';
+  } else if (favorites) {
+    className = 'favorites__places';
   }
 
   const placesList = offers.map((offer) => (
@@ -24,7 +27,7 @@ export default function PlacesList({offers, near}: PlacesListProps): JSX.Element
   ));
 
   return (
-    <div className={`${className} places__list${near ? '' : ' tabs__content'}`}>
+    <div className={`${className}${favorites ? '' : ' places__list'}${near ? '' : ' tabs__content'}`}>
       {placesList}
     </div>
   );
