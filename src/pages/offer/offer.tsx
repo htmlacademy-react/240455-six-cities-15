@@ -1,6 +1,5 @@
 import { ChangeEvent } from 'react';
 import { AuthorizationStatus } from '../../const';
-import {REVIEWS_COUNT} from '../../mock/review.ts';
 import { TypeOffer, TypeReview } from '../../types';
 import OfferGallery from './components/offer-gallery';
 import PremiumMark from '../../components/ui/premium-mark';
@@ -24,10 +23,14 @@ type OfferProps = {
 export default function Offer({ offers, reviews, authorizationStatus, onReview}: OfferProps): JSX.Element {
   const { id } = useParams();
   const currentOffer: TypeOffer | undefined = offers.find((offer: TypeOffer) => offer.id === id);
+  const reviewsCount = reviews.length;
 
   if (!currentOffer) {
     return <NotFound />;
   }
+
+  const capacityTitle = `Max\u00a0${currentOffer.maxAdults}\u00a0${currentOffer.maxAdults > 1 ? 'adults' : 'adult'}`;
+  const bedroomsTitle = `${currentOffer.bedrooms}\u00a0${currentOffer.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'}`;
 
   return (
     <main className="page__main page__main--offer">
@@ -51,10 +54,10 @@ export default function Offer({ offers, reviews, authorizationStatus, onReview}:
                 {currentOffer.type}
               </li>
               <li className="offer__feature offer__feature--bedrooms">
-                {currentOffer.bedrooms} Bedrooms
+                {bedroomsTitle}
               </li>
               <li className="offer__feature offer__feature--adults">
-                Max {currentOffer.maxAdults} adults
+                {capacityTitle}
               </li>
             </ul>
             <div className="offer__price">
@@ -74,9 +77,7 @@ export default function Offer({ offers, reviews, authorizationStatus, onReview}:
                 <span className="offer__user-name">
                   {currentOffer.host.name}
                 </span>
-                <span className="offer__user-status">
-                  {currentOffer.host.isPro}
-                </span>
+                <span className="offer__user-status">{currentOffer.host.isPro && 'Pro'}</span>
               </div>
               <div className="offer__description">
                 <p className="offer__text">
@@ -88,7 +89,7 @@ export default function Offer({ offers, reviews, authorizationStatus, onReview}:
               </div>
             </div>
             <section className="offer__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{REVIEWS_COUNT}</span></h2>
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsCount}</span></h2>
               <ReviewsList reviews={reviews} />
               {authorizationStatus === AuthorizationStatus.Auth &&
               <ReviewsForm onReview={onReview}/>}

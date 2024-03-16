@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ucFirst } from '../utils/common';
 import { TypeOffer } from '../types.ts';
@@ -10,9 +9,10 @@ type PlaceCardProps = {
   offer: TypeOffer;
   favorite?: boolean;
   near?: boolean;
+  onActiveOffer: (offer?: TypeOffer) => void;
 }
 
-export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.Element {
+export default function PlaceCard({offer, favorite, near, onActiveOffer}: PlaceCardProps): JSX.Element {
   let className = 'cities';
 
   if (favorite) {
@@ -21,12 +21,12 @@ export default function PlaceCard({offer, favorite, near}: PlaceCardProps): JSX.
     className = 'near-places';
   }
 
-  const [activeOffer, setActiveOffer] = useState('');
-  const handleOfferEnter = () => setActiveOffer(offer.id);
-  const handleOfferLeave = () => setActiveOffer('');
+  const handleOfferHover = () => !near && !favorite ? onActiveOffer(offer) : '';
+  const handleOfferLeave = () => !near && !favorite ? onActiveOffer() : '';
 
   return (
-    <article onMouseEnter={handleOfferEnter} onMouseLeave={handleOfferLeave} className={`${className}__card place-card`}>
+
+    <article className={`${className}__card place-card`} onMouseEnter={handleOfferHover} onMouseLeave={handleOfferLeave}>
       {offer.isPremium && <PremiumMark/>}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <Link to=''>

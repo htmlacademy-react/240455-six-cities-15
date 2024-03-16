@@ -32,12 +32,20 @@ export default function App({offersCount, offers, reviews}: AppProps): JSX.Eleme
           >
             <Route
               index
-              element={<Main offersCount={offersCount} offers={offers} />}
+              element={
+                <Main
+                  offersCount={offersCount}
+                  offers={offers}
+                />
+              }
             />
             <Route
               path={AppRoute.Offer}
               element={
-                <Offer authorizationStatus={authorizationStatus} offers={offers} reviews={reviews}
+                <Offer
+                  authorizationStatus={authorizationStatus}
+                  offers={offers}
+                  reviews={reviews}
                   onReview={() => {
                     throw new Error('Function \'onReview\' isn\'t implemented.');
                   }}

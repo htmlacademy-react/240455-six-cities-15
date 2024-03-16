@@ -19,6 +19,4 @@ function generateReview() {
   };
 }
 
-export const REVIEWS_COUNT = 3 as const;
-
-export const reviews: Array<TypeReview> = Array.from({ length: REVIEWS_COUNT }, () => generateReview());
+export const reviews: Array<TypeReview> = Array.from({ length: 3 }, () => generateReview());

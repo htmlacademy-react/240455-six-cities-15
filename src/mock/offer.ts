@@ -74,7 +74,7 @@ function generateOffer() {
     host: {
       name: 'Oliver Conner',
       avatarUrl: 'https://url-to-image/image.png',
-      isPro: false
+      isPro: true
     },
     images: [
       'img/room.jpg',
