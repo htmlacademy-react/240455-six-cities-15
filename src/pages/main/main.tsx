@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { CITIES } from '../../const';
 import { TypeOffer } from '../../types.ts';
 import LocationsList from './components/locations-list.tsx';
@@ -14,22 +15,25 @@ type MainProps = {
 export default function Main({offersCount, offers}: MainProps): JSX.Element {
 
   return (
-    <main className="page__main page__main--index">
-      <h1 className="visually-hidden">Cities</h1>
-      <LocationsList CITIES={CITIES} />
-      <div className="cities">
-        <div className="cities__places-container container">
-          <section className="cities__places places">
-            <h2 className="visually-hidden">Places</h2>
-            <PlacesFound offersCount={offersCount} CITIES={CITIES} />
-            <PlacesSorting />
-            <PlacesList offers={offers} />
-          </section>
-          <div className="cities__right-section">
-            <Map />
+    <>
+      <Helmet><title>6 cities</title></Helmet>
+      <main className="page__main page__main--index">
+        <h1 className="visually-hidden">Cities</h1>
+        <LocationsList CITIES={CITIES} />
+        <div className="cities">
+          <div className="cities__places-container container">
+            <section className="cities__places places">
+              <h2 className="visually-hidden">Places</h2>
+              <PlacesFound offersCount={offersCount} CITIES={CITIES} />
+              <PlacesSorting />
+              <PlacesList offers={offers} />
+            </section>
+            <div className="cities__right-section">
+              <Map />
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

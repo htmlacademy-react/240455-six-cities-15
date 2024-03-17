@@ -34,8 +34,8 @@ type ReviewsRatingFormProps = {
 
 export default function ReviewsRatingForm({onChange}: ReviewsRatingFormProps): JSX.Element {
 
-  const reviewsRatingForm = rating.map((ratingItem) => (
-    <ReviewsRatingStar key={ratingItem.value} starNumber={ratingItem.value} starTitle={ratingItem.title} onChange={onChange} />
+  const reviewsRatingForm = rating.map(({value, title}) => (
+    <ReviewsRatingStar key={value} starNumber={value} starTitle={title} onChange={onChange} />
   ));
 
   return (

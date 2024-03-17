@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { TypeOffer } from '../../types.ts';
 import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
 import PlacesList from '../../components/places-list.tsx';
@@ -7,7 +8,7 @@ type FavoritesInCityProps = {
   offers: TypeOffer[];
 }
 
-function FavoritesInCity({city, offers }: FavoritesInCityProps): JSX.Element {
+function FavoritesInCity({city, offers}: FavoritesInCityProps): JSX.Element {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -36,15 +37,18 @@ export default function Favorites({favorites}: FavoritesProps): JSX.Element {
   const favoritesList = cities.map((city) => <FavoritesInCity key={city} city={city} offers={favoritesGroupped[city]} />);
 
   return (
-    <main className="page__main page__main--favorites">
-      <div className="page__favorites-container container">
-        <section className="favorites">
-          <h1 className="favorites__title">Saved listing</h1>
-          <ul className="favorites__list">
-            {favoritesList}
-          </ul>
-        </section>
-      </div>
-    </main>
+    <>
+      <Helmet><title>6 cities: favorites</title></Helmet>
+      <main className="page__main page__main--favorites">
+        <div className="page__favorites-container container">
+          <section className="favorites">
+            <h1 className="favorites__title">Saved listing</h1>
+            <ul className="favorites__list">
+              {favoritesList}
+            </ul>
+          </section>
+        </div>
+      </main>
+    </>
   );
 }
