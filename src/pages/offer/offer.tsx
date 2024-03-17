@@ -93,6 +93,7 @@ export default function Offer({ offers, reviews, authorizationStatus, onReview}:
               <ReviewsList reviews={reviews} />
               {authorizationStatus === AuthorizationStatus.Auth &&
               <ReviewsForm onReview={onReview}/>}
+              {authorizationStatus !== AuthorizationStatus.Auth && <p>Только авторизированные пользователи могут оставлять комментарии.</p>}
             </section>
           </div>
         </div>

@@ -15,9 +15,30 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export const STARS_INITIAL: string = '0';
+export const RATING_MAX = 5 as const;
 
-export const STARS_COUNT = 5 as const;
+export const rating = [
+  {
+    value: 5,
+    title: 'perfect',
+  },
+  {
+    value: 4,
+    title: 'good'
+  },
+  {
+    value: 3,
+    title: 'not bad'
+  },
+  {
+    value: 2,
+    title: 'badly'
+  },
+  {
+    value: 1,
+    title: 'terribly'
+  },
+];
 
 export const SORTING = [
   {

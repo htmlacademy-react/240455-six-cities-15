@@ -1,4 +1,4 @@
-import { STARS_COUNT } from '../../const';
+import { RATING_MAX } from '../../const';
 
 type RatingStarsProps = {
   rating: number;
@@ -8,7 +8,7 @@ type RatingStarsProps = {
 export default function RatingStars({rating, offerClass}: RatingStarsProps): JSX.Element {
 
   const className = offerClass ? 'offer' : 'place-card';
-  const ratingWidthStyle = `${rating * (100 / STARS_COUNT)}%`;
+  const ratingWidthStyle = `${rating * (100 / RATING_MAX)}%`;
 
   return (
     <div className={`${className}__stars rating__stars`}>
