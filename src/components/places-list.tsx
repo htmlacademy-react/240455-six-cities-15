@@ -1,5 +1,5 @@
 import { Nullable } from 'vitest';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TypeOffer } from '../types.ts';
 import PlaceCard from './place-card';
 
@@ -13,6 +13,10 @@ export default function PlacesList({offers, near, favorites}: PlacesListProps): 
 
   const [activeOffer, setActiveOffer] = useState<Nullable<TypeOffer>>(null);
   const handleActiveOffer = (offer?: TypeOffer) => setActiveOffer(offer || null);
+
+  useEffect(() => {
+
+  }, [activeOffer]);
 
   let className = 'cities__places-list';
 
