@@ -1,14 +1,25 @@
-import { STARS_COUNT } from '../../../const';
+import { ChangeEvent } from 'react';
+import { rating } from '../../../const';
 
 type ReviewsRatingStarProps = {
   starNumber: number;
+  starTitle: string;
+  onChange: (value: string) => void;
 }
 
-function ReviewsRatingStar({starNumber}: ReviewsRatingStarProps): JSX.Element {
+function ReviewsRatingStar({starNumber, starTitle, onChange}: ReviewsRatingStarProps): JSX.Element {
+
+  const handleStarCount = (event: ChangeEvent<HTMLInputElement>) => onChange(event.target.value);
+
   return (
     <>
-      <input className="form__rating-input visually-hidden" name="rating" value={starNumber} id={`${starNumber}-stars`} type="radio" />
-      <label htmlFor={`${starNumber}-stars`} className="reviews__rating-label form__rating-label" title="perfect">
+      <input
+        onChange={handleStarCount}
+        className="form__rating-input visually-hidden" name="rating"
+        value={starNumber} id={`${starNumber}-stars`}
+        type="radio"
+      />
+      <label htmlFor={`${starNumber}-stars`} className="reviews__rating-label form__rating-label" title={starTitle}>
         <svg className="form__star-image" width="37" height="33">
           <use xlinkHref="#icon-star"></use>
         </svg>
@@ -17,12 +28,14 @@ function ReviewsRatingStar({starNumber}: ReviewsRatingStarProps): JSX.Element {
   );
 }
 
-export default function ReviewsRatingForm(): JSX.Element {
+type ReviewsRatingFormProps = {
+  onChange: (value: string) => void;
+}
 
-  const array: number[] = [...Array(STARS_COUNT).keys()];
+export default function ReviewsRatingForm({onChange}: ReviewsRatingFormProps): JSX.Element {
 
-  const reviewsRatingForm = array.map((key) => (
-    <ReviewsRatingStar key={key + 1} starNumber={key + 1} />
+  const reviewsRatingForm = rating.map(({value, title}) => (
+    <ReviewsRatingStar key={value} starNumber={value} starTitle={title} onChange={onChange} />
   ));
 
   return (

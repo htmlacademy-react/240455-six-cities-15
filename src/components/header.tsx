@@ -1,15 +1,15 @@
 import {Link} from 'react-router-dom';
 import { AppRoute, AuthorizationStatus} from '../const';
 import Logo from './ui/logo';
-import { favoriteCount } from '../const';
 
 type HeaderProps = {
   linkClassName: string;
   authorizationStatus: AuthorizationStatus;
   pathname: AppRoute;
+  favoriteCount: number;
 }
 
-export default function Header({linkClassName, authorizationStatus, pathname}: HeaderProps): JSX.Element {
+export default function Header({linkClassName, authorizationStatus, pathname, favoriteCount}: HeaderProps): JSX.Element {
 
   return (
     <header className="header">

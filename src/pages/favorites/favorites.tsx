@@ -1,15 +1,11 @@
-import { favorites } from '../../const.ts';
-import { OfferType } from '../../types.ts';
+import { Helmet } from 'react-helmet-async';
+import { TypeOffer } from '../../types.ts';
 import LocationsItemLink from '../../components/ui/locations-item-link.tsx';
-import PlaceCard from '../../components/place-card.tsx';
-
-const favoritesGroupped: { [city: string]: OfferType[] } = favorites.reduce((result, favorite) => ({
-  ...result, [favorite.city.name]: [...(result[favorite.city.name] || []), favorite]
-}), {} as { [city: string]: OfferType[] });
+import PlacesList from '../../components/places-list.tsx';
 
 type FavoritesInCityProps = {
   city: string;
-  offers: OfferType[];
+  offers: TypeOffer[];
 }
 
 function FavoritesInCity({city, offers}: FavoritesInCityProps): JSX.Element {
@@ -20,34 +16,39 @@ function FavoritesInCity({city, offers}: FavoritesInCityProps): JSX.Element {
           <LocationsItemLink city={city} />
         </div>
       </div>
-      <div className="favorites__places">
-        {offers.map((offer) => (
-          <PlaceCard
-            key={offer.id}
-            offer={offer}
-            favorite
-          />))}
-      </div>
+      <PlacesList offers={offers} favorites />
     </li>
   );
 }
 
-export default function Favorites(): JSX.Element {
+type FavoritesProps = {
+  favorites: TypeOffer[];
+}
+
+export default function Favorites({favorites}: FavoritesProps): JSX.Element {
+
+  const favoritesGroupped: { [city: string]: TypeOffer[] } = favorites.reduce((result, favorite) => ({
+    ...result, [favorite.city.name]: [...(result[favorite.city.name] || []), favorite]
+  }), {} as { [city: string]: TypeOffer[] });
+
 
   const cities = Object.keys(favoritesGroupped);
 
   const favoritesList = cities.map((city) => <FavoritesInCity key={city} city={city} offers={favoritesGroupped[city]} />);
 
   return (
-    <main className="page__main page__main--favorites">
-      <div className="page__favorites-container container">
-        <section className="favorites">
-          <h1 className="favorites__title">Saved listing</h1>
-          <ul className="favorites__list">
-            {favoritesList}
-          </ul>
-        </section>
-      </div>
-    </main>
+    <>
+      <Helmet><title>6 cities: favorites</title></Helmet>
+      <main className="page__main page__main--favorites">
+        <div className="page__favorites-container container">
+          <section className="favorites">
+            <h1 className="favorites__title">Saved listing</h1>
+            <ul className="favorites__list">
+              {favoritesList}
+            </ul>
+          </section>
+        </div>
+      </main>
+    </>
   );
 }

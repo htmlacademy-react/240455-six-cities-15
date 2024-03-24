@@ -1,4 +1,7 @@
-import { offers, offersNear, REVIEWS_COUNT, AuthorizationStatus } from '../../const';
+import { Helmet } from 'react-helmet-async';
+import { ChangeEvent } from 'react';
+import { AuthorizationStatus } from '../../const';
+import { TypeOffer, TypeReview } from '../../types';
 import OfferGallery from './components/offer-gallery';
 import PremiumMark from '../../components/ui/premium-mark';
 import BookmarkButton from '../../components/ui/bookmark-button';
@@ -6,99 +9,106 @@ import OfferInside from './components/offer-inside';
 import ReviewsList from './components/reviews-list';
 import ReviewsForm from './components/reviews-form';
 import Map from '../../components/map';
-import PlaceCard from '../../components/place-card';
+import PlacesList from '../../components/places-list.tsx';
+import RatingStars from '../../components/ui/rating-stars.tsx';
+import NotFound from '../not-found/not-found.tsx';
+import { useParams } from 'react-router-dom';
 
 type OfferProps = {
+  offers: TypeOffer[];
+  reviews: TypeReview[];
   authorizationStatus: AuthorizationStatus;
+  onReview: (review: ChangeEvent<HTMLTextAreaElement> | string, starCount: ChangeEvent<HTMLInputElement> | string) => void;
 }
 
-export default function Offer({authorizationStatus}: OfferProps): JSX.Element {
-  const offer = offers[0];
+export default function Offer({ offers, reviews, authorizationStatus, onReview}: OfferProps): JSX.Element {
+  const { id } = useParams();
+  const currentOffer: TypeOffer | undefined = offers.find((offer: TypeOffer) => offer.id === id);
+  const reviewsCount = reviews.length;
+
+  if (!currentOffer) {
+    return <NotFound />;
+  }
+
+  const capacityTitle = `Max\u00a0${currentOffer.maxAdults}\u00a0${currentOffer.maxAdults > 1 ? 'adults' : 'adult'}`;
+  const bedroomsTitle = `${currentOffer.bedrooms}\u00a0${currentOffer.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'}`;
 
   return (
-    <main className="page__main page__main--offer">
-      <section className="offer">
-        <OfferGallery gallery={offer.images} />
-        <div className="offer__container container">
-          <div className="offer__wrapper">
-            {offer.isPremium && <PremiumMark offerClass />}
-            <div className="offer__name-wrapper">
-              <h1 className="offer__name">
-                {offer.title}
-              </h1>
-              <BookmarkButton isFavorite={offer.isFavorite} offerClass width={31} height={33} />
-            </div>
-            <div className="offer__rating rating">
-              <div className="offer__stars rating__stars">
-                <span style={{width:'80%'}}></span>
-                <span className="visually-hidden">Rating</span>
+    <>
+      <Helmet><title>6 cities: offer</title></Helmet>
+      <main className="page__main page__main--offer">
+        <section className="offer">
+          <OfferGallery gallery={currentOffer.images} />
+          <div className="offer__container container">
+            <div className="offer__wrapper">
+              {currentOffer.isPremium && <PremiumMark offerClass />}
+              <div className="offer__name-wrapper">
+                <h1 className="offer__name">
+                  {currentOffer.title}
+                </h1>
+                <BookmarkButton isFavorite={currentOffer.isFavorite} offerClass width={31} height={33} />
               </div>
-              <span className="offer__rating-value rating__value">{offer.rating}</span>
-            </div>
-            <ul className="offer__features">
-              <li className="offer__feature offer__feature--entire">
-                {offer.type}
-              </li>
-              <li className="offer__feature offer__feature--bedrooms">
-                {offer.bedrooms} Bedrooms
-              </li>
-              <li className="offer__feature offer__feature--adults">
-                Max {offer.maxAdults} adults
-              </li>
-            </ul>
-            <div className="offer__price">
-              <b className="offer__price-value">&euro;{offer.price}</b>
-              <span className="offer__price-text">&nbsp;night</span>
-            </div>
-            <div className="offer__inside">
-              <h2 className="offer__inside-title">What&apos;s inside</h2>
-              <OfferInside goods={offer.goods} />
-            </div>
-            <div className="offer__host">
-              <h2 className="offer__host-title">Meet the host</h2>
-              <div className="offer__host-user user">
-                <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                  <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+              <div className="offer__rating rating">
+                <RatingStars rating={currentOffer.rating} offerClass />
+                <span className="offer__rating-value rating__value">{currentOffer.rating}</span>
+              </div>
+              <ul className="offer__features">
+                <li className="offer__feature offer__feature--entire">
+                  {currentOffer.type}
+                </li>
+                <li className="offer__feature offer__feature--bedrooms">
+                  {bedroomsTitle}
+                </li>
+                <li className="offer__feature offer__feature--adults">
+                  {capacityTitle}
+                </li>
+              </ul>
+              <div className="offer__price">
+                <b className="offer__price-value">&euro;{currentOffer.price}</b>
+                <span className="offer__price-text">&nbsp;night</span>
+              </div>
+              <div className="offer__inside">
+                <h2 className="offer__inside-title">What&apos;s inside</h2>
+                <OfferInside goods={currentOffer.goods} />
+              </div>
+              <div className="offer__host">
+                <h2 className="offer__host-title">Meet the host</h2>
+                <div className="offer__host-user user">
+                  <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
+                    <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                  </div>
+                  <span className="offer__user-name">
+                    {currentOffer.host.name}
+                  </span>
+                  <span className="offer__user-status">{currentOffer.host.isPro && 'Pro'}</span>
                 </div>
-                <span className="offer__user-name">
-                  {offer.host.name}
-                </span>
-                <span className="offer__user-status">
-                  {offer.host.isPro}
-                </span>
+                <div className="offer__description">
+                  <p className="offer__text">
+                    {currentOffer.description}
+                  </p>
+                  <p className="offer__text">
+                    {currentOffer.description}
+                  </p>
+                </div>
               </div>
-              <div className="offer__description">
-                <p className="offer__text">
-                  {offer.description}
-                </p>
-                <p className="offer__text">
-                  {offer.description}
-                </p>
-              </div>
+              <section className="offer__reviews reviews">
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsCount}</span></h2>
+                <ReviewsList reviews={reviews} />
+                {authorizationStatus === AuthorizationStatus.Auth &&
+                <ReviewsForm onReview={onReview}/>}
+                {authorizationStatus !== AuthorizationStatus.Auth && <p>Только авторизированные пользователи могут оставлять комментарии.</p>}
+              </section>
             </div>
-            <section className="offer__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{REVIEWS_COUNT}</span></h2>
-              <ReviewsList />
-              {authorizationStatus === AuthorizationStatus.Auth &&
-              <ReviewsForm />}
-            </section>
           </div>
-        </div>
-        <Map offerClass />
-      </section>
-      <div className="container">
-        <section className="near-places places">
-          <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <div className="near-places__list places__list">
-            {offersNear.map((offerNear) => (
-              <PlaceCard
-                key={offerNear.id}
-                offer={offerNear}
-                near
-              />))}
-          </div>
+          <Map offerClass />
         </section>
-      </div>
-    </main>
+        <div className="container">
+          <section className="near-places places">
+            <h2 className="near-places__title">Other places in the neighbourhood</h2>
+            <PlacesList offers={offers} near />
+          </section>
+        </div>
+      </main>
+    </>
   );
 }

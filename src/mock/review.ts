@@ -1,4 +1,5 @@
-import { DESCRIPTION } from '../const.ts';
+import { DESCRIPTION } from './offer.ts';
+import { TypeReview } from '../types.ts';
 import { getRandomArrayElement, createIdGenerator, getRandomInteger } from '../utils/common.ts';
 
 const generateReviewId = createIdGenerator();
@@ -18,4 +19,4 @@ function generateReview() {
   };
 }
 
-export { generateReview };
+export const reviews: Array<TypeReview> = Array.from({ length: 3 }, () => generateReview());
